@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react"
 
 export const useHttpClient = () => {
-    const [json, setJson] = useState({})
+    const [_, setJson] = useState({})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [controller, setController] = useState(null)
@@ -45,6 +45,7 @@ export const useHttpClient = () => {
                 setController(null);
             }
         }
-    })
-    return { send, json, loading, error }
+    }, [controller])
+    
+    return { send, loading, error }
 }

@@ -1,4 +1,4 @@
-export const Forecast = ({ children }) => {
+export const Forecast = (props) => {
     return (
         <div
         style={{
@@ -6,7 +6,7 @@ export const Forecast = ({ children }) => {
             flexDirection: 'column',
             gap: '1em'
         }}>
-            {children}
+            {props.children}
         </div>
     )
 }

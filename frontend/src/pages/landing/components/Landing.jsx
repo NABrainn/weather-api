@@ -41,7 +41,10 @@ export const Landing = () => {
         <Wrapper>
             <Content>
                 <Forecast>
-                    <CityBrowser/>
+                    <CityBrowser
+                        setCities={setCities}
+                        cities={cities}
+                    />
                     <ForecastList>
                         {
                             cities.map(city => 
