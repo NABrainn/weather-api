@@ -1,5 +1,5 @@
-import droplet from '../../../../../../../../../../assets/droplet.svg'
-import wind from '../../../../../../../../../../assets/wind.svg'
+import droplet from '../../../../../../../assets/droplet.svg'
+import wind from '../../../../../../../assets/wind.svg'
 import styles from "./ForecastDay.module.css"
 
 export const ForecastDay = (props) => {

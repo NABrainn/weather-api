@@ -1,11 +1,11 @@
-import { Forecast } from "./wrapper/content/forecast/Forecast"
+import { Forecast } from "./forecast/Forecast"
 import { Wrapper } from "./wrapper/Wrapper"
 import { useState } from "react"
 import piaseczno from '../../../assets/piaseczno.png'
-import { Content } from "./wrapper/content/Content"
-import { CityBrowser } from "./wrapper/content/forecast/cityBrowser/CityBrowser"
-import {ForecastList} from "./wrapper/content/forecast/forecastList/ForecastList.jsx";
-import {ForecastItem} from "./wrapper/content/forecast/forecastList/body/forecastItem/ForecastItem.jsx";
+import { Content } from "./content/Content"
+import { CityBrowser } from "./cityBrowser/CityBrowser"
+import {ForecastList} from "./forecastList/ForecastList.jsx";
+import {ForecastItem} from "./forecastList/body/forecastItem/ForecastItem.jsx";
 
 export const Landing = () => {
     const [cities, setCities] = useState([

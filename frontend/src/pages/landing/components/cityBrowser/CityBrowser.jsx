@@ -1,11 +1,11 @@
 import { useState } from "react"
-import { Button } from '../../../../../../../components/button/Button'
-import { Textfield } from "../../../../../../../components/textfield/Textfield"
-import { Error } from '../../../../../../../components/httpClient/Error'
-import { Loading } from '../../../../../../../components/httpClient/Loading'
-import { Ok } from "../../../../../../../components/httpClient/Ok"
-import { useHttpClient } from '../../../../../../../hooks/useHttpClient'
-import { BrowsingResult } from './BrowsingResult'
+import { Button } from '../../../../components/button/Button.jsx'
+import { Textfield } from "../../../../components/textfield/Textfield.jsx"
+import { Error } from '../../../../components/httpClient/Error.jsx'
+import { Loading } from '../../../../components/httpClient/Loading.jsx'
+import { Ok } from "../../../../components/httpClient/Ok.jsx"
+import { useHttpClient } from '../../../../hooks/useHttpClient.js'
+import { BrowsingResult } from './BrowsingResult.jsx'
 import styles from './CityBrowser.module.css'
 
 export const CityBrowser = (props) => {

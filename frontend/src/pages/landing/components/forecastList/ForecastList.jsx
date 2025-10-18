@@ -1,4 +1,4 @@
-import { HeaderCell } from './header/HeaderCell'
+import { HeaderCell } from './header/HeaderCell.jsx'
 import styles from './ForecastList.module.css'
 
 export const ForecastList = ({ children }) => {
