@@ -17,7 +17,7 @@ export const BrowsingResult = (props) => {
             >
                             <span
                                 className={styles.label}
-                            >Znalezione miasta:</span>
+                            >Wyniki wyszukiwania</span>
                 <ol
                     className={styles.item}
                 >

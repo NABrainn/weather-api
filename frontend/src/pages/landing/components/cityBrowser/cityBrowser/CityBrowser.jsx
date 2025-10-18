@@ -43,6 +43,7 @@ export const CityBrowser = (props) => {
         e.preventDefault()
         if(mockCity) {
             setBrowsingResult(mockCity)
+            setCityInputValue('')
             return
         }
         const response = await client.send('http://nrk.no', {
@@ -66,6 +67,7 @@ export const CityBrowser = (props) => {
                 className={styles.cityBrowser}
             >
                 <Textfield
+                    before={'🔎'}
                     bg={'var(--five-110)'}
                     flex={'1 1 75%'}
                     border={{

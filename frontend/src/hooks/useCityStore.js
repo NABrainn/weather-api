@@ -18,7 +18,7 @@ const saveCitiesToStorage = (cities) => {
     }
 };
 
-export const useLocalStorage = () => {
+export const useCityStore = () => {
     const [cities, setCities] = useState(loadCitiesFromStorage);
 
     const add = useCallback(

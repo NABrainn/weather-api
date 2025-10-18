@@ -26,9 +26,9 @@
         justify-content: space-between;
         padding: 1.2rem;
 
-        /* .cityName {
-
-        } */
+        & .cityName {
+            font-weight: bold;
+        }
 
         & .addCityBtn {
             cursor: pointer;

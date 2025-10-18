@@ -36,9 +36,12 @@ export const CityForecast = (props) => {
             >
                 <Button
                     bg={'var(--two)'}
-                    text={'▄︻テ══━一💥'}
-                    fontSize={'2em'}
+                    textColor={'var(--one)'}
+                    text={'x'}
+                    fontSize={'1.5em'}
+                    bold
                     handleClick={() => props.removeFn(props.id)}
+                    hover
                 />
             </td>
         </tr>

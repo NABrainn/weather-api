@@ -19,9 +19,7 @@ export const CityTable = (props) => {
                 <HeaderCell
                     text={'Pojutrze'}
                 />
-                <HeaderCell
-                    text={'Delete?'}
-                />
+                <HeaderCell/>
             </tr>
             </thead>
             <tbody>
@@ -40,9 +38,12 @@ export const CityTable = (props) => {
             </tbody>
         </table>;
     const emptyCities = <div>
-        <strong>No cities found to display</strong>
+        <strong>Nie znaleziono miast do wyświetlenia prognozy</strong>
     </div>
-    const display = props.cities.length ? table : emptyCities
+    const display =
+        props.cities.length ?
+        table :
+        emptyCities
     return (<>
         {display}
     </>)

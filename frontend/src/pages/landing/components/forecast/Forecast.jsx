@@ -1,10 +1,10 @@
 import styles from './Forecast.module.css'
 import {CityBrowser} from "../cityBrowser/cityBrowser/CityBrowser.jsx";
 import {CityTable} from "../forecastTable/CityTable.jsx";
-import {useLocalStorage} from "../../../../hooks/useLocalStorage.js";
+import {useCityStore} from "../../../../hooks/useCityStore.js";
 
-export const Forecast = (props) => {
-    const { cities, add, remove } = useLocalStorage();
+export const Forecast = () => {
+    const { cities, add, remove } = useCityStore();
     return (
         <div
             className={styles.forecast}

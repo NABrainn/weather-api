@@ -1,5 +1,3 @@
-import droplet from '../../../../../../../assets/droplet.svg'
-import wind from '../../../../../../../assets/wind.svg'
 import styles from "./ForecastDay.module.css"
 
 export const ForecastDay = (props) => {
@@ -24,37 +22,30 @@ export const ForecastDay = (props) => {
             <div
                 className={styles.temperatureColumn}
             >
+                <span>⛅</span>
                 <span
                     style={{
                         color: color(props.temperature)
                     }}
                 >
-                    <span>{props.temperature}</span>
-                </span> °C
+                    {props.temperature} °C
+                </span>
             </div>
             <div
                 className={styles.rainColumn}
             >
-                <img
-                    className={styles.img}
-                    src={droplet}
-                    alt=""
-                />
-                <span>{props.rain}</span>
-                <span className={styles.quant}> mm</span>
+                <span>💧</span>
+                <span>{props.rain}
+                    <span className={styles.quant}> mm</span>
+                </span>
             </div>
             <div
                 className={styles.windColumn}
             >
-                <img
-                    className={styles.img}
-                    src={wind}
-                    alt=""
-                />
-                <span>{props.wind}</span>
-                <span
-                    className={styles.quant}
-                > m/s</span>
+                <span>༄</span>
+                <span>{props.wind}
+                    <span className={styles.quant}> m/s</span>
+                </span>
             </div>
         </td>
     )
