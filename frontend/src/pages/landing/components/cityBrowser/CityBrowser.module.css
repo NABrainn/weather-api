@@ -3,13 +3,6 @@
     display: flex;
     gap: 0.5em;
 }
-
-.loading {
-    min-height: 5em;
-    background-color: var(--two);
-    padding: 1em;
-}
-
 .error {
     min-height: 5em;
     background-color: var(--two);

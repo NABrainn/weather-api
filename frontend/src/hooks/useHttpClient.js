@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from "react"
 
 export const useHttpClient = () => {
-    const [_, setJson] = useState({})
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false)
     const [controller, setController] = useState(null)
@@ -17,7 +16,6 @@ export const useHttpClient = () => {
                 signal: abortController.signal
             })
             const responseJson = await response.json()
-            setJson(responseJson)
             setLoading(false)
             setError(false)
             setController(null)
@@ -25,13 +23,11 @@ export const useHttpClient = () => {
         }
         catch(e) {
             if (e.name === "AbortError") {
-                setJson({});
                 setLoading(false);
                 setError(false);
                 setController(null);
                 return { error: true, message: "Request was canceled" };
             }
-            setJson({})
             setLoading(false)
             setError(true)
             setController(null);

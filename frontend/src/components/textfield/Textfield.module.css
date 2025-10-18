@@ -1,3 +1,17 @@
 .textfield {
     outline: none;
 }
+
+.loading {
+    animation: skeleton-loading 1s linear infinite alternate;
+    color: var(--two);
+}
+
+@keyframes skeleton-loading {
+    0% {
+        background-color: var(--two);
+    }
+    100% {
+        background-color: var(--five);
+    }
+}

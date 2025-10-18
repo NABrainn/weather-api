@@ -1,9 +1,6 @@
 import { useState } from "react"
 import { Button } from '../../../../components/button/Button.jsx'
 import { Textfield } from "../../../../components/textfield/Textfield.jsx"
-import { Error } from '../../../../components/httpClient/Error.jsx'
-import { Loading } from '../../../../components/httpClient/Loading.jsx'
-import { Ok } from "../../../../components/httpClient/Ok.jsx"
 import { useHttpClient } from '../../../../hooks/useHttpClient.js'
 import { BrowsingResult } from './BrowsingResult.jsx'
 import styles from './CityBrowser.module.css'
@@ -47,6 +44,7 @@ export const CityBrowser = (props) => {
                     placeholder={'np. Piaseczno'}
                     setValue={setCityInputValue}
                     value={cityInputValue}
+                    loading={client.loading}
                 />
                 <Button
                     handleClick={(e) => search(e)}
@@ -58,45 +56,32 @@ export const CityBrowser = (props) => {
             </form>
             <BrowsingResult>
                 {client.error ?
-                    <Error>
-                        <div 
-                            className={styles.error}
-                        >
-                            Failed to fetch resource
-                        </div>
-                    </Error> :
-                    <></>
-                }
-                {client.loading ?
-                    <Loading>
-                        <div
-                            className={styles.loading}
-                        >
-                        </div>
-                    </Loading> :
+                    <div
+                        className={styles.error}
+                    >
+                        Failed to fetch resource
+                    </div> :
                     <></>
                 }
                 {browsingResult ?
-                    <Ok>
-                        <div
-                            className={styles.ok}
+                    <div
+                        className={styles.ok}
+                    >
+                        <span
+                            className={styles.label}
+                        >Znalezione miasta:</span>
+                        <ol
+                            className={styles.item}
                         >
+                            <li
+                                className={styles.cityName}
+                            >Warszawa</li>
                             <span
-                                className={styles.label}
-                            >Znalezione miasta:</span>
-                            <ol
-                                className={styles.item}
-                            >
-                                <li
-                                    className={styles.cityName}    
-                                >Warszawa</li>
-                                <span
-                                    className={styles.addCityBtn}
-                                    onClick={() => addCity()}
-                                >+ Dodaj</span>
-                            </ol>
-                        </div>
-                    </Ok> :
+                                className={styles.addCityBtn}
+                                onClick={() => addCity()}
+                            >+ Dodaj</span>
+                        </ol>
+                    </div> :
                     <></>
                 }
             </BrowsingResult>

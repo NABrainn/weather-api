@@ -5,16 +5,16 @@ export const Textfield = (props) => {
     const [focused, setFocused] = useState(false)
     return ( 
         <input 
-            className={styles.textfield}
+            className={`${styles.textfield} ${props.loading ? styles.loading : ''}`}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
             onChange={(e) => props.setValue(e.target.value)}
             style={{
                 backgroundColor: props.bg,
-                border: focused ? props.border.focus : props.border.default,
+                border: focused || props.loading ? props.border.focus : props.border.default,
                 borderRadius: props.rounded,
                 minHeight: props.minHeight,
-                flex: props.flex
+                flex: props.flex,
             }}
             value={props.value}
             placeholder={props.placeholder}
