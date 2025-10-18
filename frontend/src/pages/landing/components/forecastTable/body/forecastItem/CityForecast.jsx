@@ -2,7 +2,7 @@ import { ForecastDay } from "./forecastDay/ForecastDay.jsx";
 import { ForecastLabel } from "./forecastLabel/ForecastLabel.jsx";
 import styles from "./ForecastItem.module.css"
 
-export const ForecastItem = (props) => {
+export const CityForecast = (props) => {
     return (
         <tr
             className={styles.item}

@@ -1,8 +1,9 @@
 import { useState } from "react"
-import { Button } from '../../../../components/button/Button.jsx'
-import { Textfield } from "../../../../components/textfield/Textfield.jsx"
-import { useHttpClient } from '../../../../hooks/useHttpClient.js'
-import { BrowsingResult } from './BrowsingResult.jsx'
+import { Button } from '../../../../../components/button/Button.jsx'
+import { Textfield } from "../../../../../components/textfield/Textfield.jsx"
+import { useHttpClient } from '../../../../../hooks/useHttpClient.js'
+import { BrowsingResult } from '../browsingResult/BrowsingResult.jsx'
+import warszawa from '../../../../../assets/warszawa.jpg'
 import styles from './CityBrowser.module.css'
 
 export const CityBrowser = (props) => {
@@ -11,8 +12,40 @@ export const CityBrowser = (props) => {
     const [browsingResult, setBrowsingResult] = useState(undefined)
     const [cityInputValue, setCityInputValue] = useState('')
 
+    const mockCity = {
+            id: 1,
+            label: {
+                name: 'Warszawa',
+                imgUrl: warszawa
+            },
+            forecast: {
+                today: {
+                    temperature: 5,    // Celsius
+                    rain: 0,            // mm
+                    wind: 4,            // m/s
+                    details: {}
+                },
+                tomorrow: {
+                    temperature: 7,
+                    rain: 0.8,
+                    wind: 5,
+                    details: {}
+                },
+                dayAfter: {
+                    temperature: 9,
+                    rain: 1.8,
+                    wind: 5,
+                    details: {}
+                }
+            }
+        }
+
     const search = async (e) => {
-        e.preventDefault()        
+        e.preventDefault()
+        if(mockCity) {
+            setBrowsingResult(mockCity)
+            return
+        }
         const response = await client.send('http://nrk.no', {
             method: "GET",
             body: JSON.stringify({
@@ -25,13 +58,12 @@ export const CityBrowser = (props) => {
         setCityInputValue('')
     }
     const addCity = () => {
-        const updatedCities = [...props.cities, browsingResult]
-        props.setCities(updatedCities)
+        props.addCity(browsingResult)
         setBrowsingResult(undefined)
     }
     return (
         <>
-            <form 
+            <form
                 className={styles.cityBrowser}
             >
                 <Textfield
@@ -54,37 +86,11 @@ export const CityBrowser = (props) => {
                     text={'Szukaj'}
                 />
             </form>
-            <BrowsingResult>
-                {client.error ?
-                    <div
-                        className={styles.error}
-                    >
-                        Failed to fetch resource
-                    </div> :
-                    <></>
-                }
-                {browsingResult ?
-                    <div
-                        className={styles.ok}
-                    >
-                        <span
-                            className={styles.label}
-                        >Znalezione miasta:</span>
-                        <ol
-                            className={styles.item}
-                        >
-                            <li
-                                className={styles.cityName}
-                            >Warszawa</li>
-                            <span
-                                className={styles.addCityBtn}
-                                onClick={() => addCity()}
-                            >+ Dodaj</span>
-                        </ol>
-                    </div> :
-                    <></>
-                }
-            </BrowsingResult>
+            <BrowsingResult
+                error={client.error}
+                value={browsingResult}
+                addCity={() => addCity()}
+            />
         </>
     )
 }

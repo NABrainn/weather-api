@@ -1,7 +1,8 @@
 import { HeaderCell } from './header/HeaderCell.jsx'
 import styles from './ForecastList.module.css'
+import {CityForecast} from "./body/forecastItem/CityForecast.jsx";
 
-export const ForecastList = ({ children }) => {
+export const CityTable = (props) => {
     return (
         <table className={styles.table}>
             <thead className={styles.head}>
@@ -21,7 +22,14 @@ export const ForecastList = ({ children }) => {
                 </tr>
             </thead>
             <tbody>
-                {children}
+                {
+                    props.cities.map(city =>
+                        <CityForecast
+                            key={city.id}
+                            label={city.label}
+                            forecast={city.forecast}>
+                        </CityForecast>)
+                }
             </tbody>
         </table>
     )
