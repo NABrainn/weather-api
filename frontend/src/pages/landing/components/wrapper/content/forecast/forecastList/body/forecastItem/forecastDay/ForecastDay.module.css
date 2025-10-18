@@ -1,0 +1,19 @@
+.column {
+    --icon-size: 1em;
+    & .temperatureColumn {
+        padding-left: .25em;
+    }
+    & .rainColumn,
+    & .windColumn {
+        display: flex;
+        gap: .2em;
+        padding-left: 0.25em;
+
+        & .img {
+            max-width: var(--icon-size);
+        }
+        & .quant {
+            font-size: .8rem;
+        }
+    }
+}

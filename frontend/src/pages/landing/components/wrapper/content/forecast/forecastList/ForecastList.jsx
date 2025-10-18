@@ -1,14 +1,10 @@
 import { HeaderCell } from './header/HeaderCell'
+import styles from './ForecastList.module.css'
+
 export const ForecastList = ({ children }) => {
     return (
-        <table style={{
-            backgroundColor: 'var(--four)',
-            padding: '0'
-        }}>
-            <thead
-            style={{
-                backgroundColor: 'var(--four)'
-            }}>
+        <table className={styles.table}>
+            <thead className={styles.head}>
                 <tr>
                     <HeaderCell
                         text={'Miasto'}
@@ -25,7 +21,7 @@ export const ForecastList = ({ children }) => {
                 </tr>
             </thead>
             <tbody>
-            {children}
+                {children}
             </tbody>
         </table>
     )

@@ -1,0 +1,20 @@
+.content {
+    padding: 0.5em;
+    margin: 0 auto;
+    max-width: 50%;
+}
+@media(max-width: 600px) {
+    .content {
+        max-width: 100%;
+    }
+}
+@media(min-width: 601px) and (max-width: 768px) {
+    .content {
+        max-width: 100%;
+    }
+}
+@media(min-width: 769px) {
+    .content {
+        max-width: 60%;
+    }
+}

@@ -1,17 +1,12 @@
-import { ForecastDay } from "./ForecastDay";
-import { ForecastLabel } from "./ForecastLabel";
+import { ForecastDay } from "./forecastDay/ForecastDay.jsx";
+import { ForecastLabel } from "./forecastLabel/ForecastLabel.jsx";
+import styles from "./ForecastItem.module.css"
 
 export const ForecastItem = (props) => {
     return (
-        <tr style={{
-            marginTop: '0.25em',
-            fontSize: 'clamp(0.85rem, 0.95vw, 2rem)',
-            backgroundColor: 'var(--two)',
-            gap: '0.5em',
-            cursor: 'pointer',
-            color: 'var(--three)',
-            fontWeight: 'bold'
-        }}>
+        <tr
+            className={styles.item}
+        >
             <ForecastLabel
             city={props.label.name}
             imgUrl={props.label.imgUrl}/>

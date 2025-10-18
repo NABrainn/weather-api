@@ -1,0 +1,5 @@
+.headerCell {
+    padding-left: .25em;
+    color: var(--five);
+    font-weight: bold;
+}
