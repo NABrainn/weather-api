@@ -13,7 +13,6 @@ export const CityBrowser = (props) => {
     const [cityInputValue, setCityInputValue] = useState('')
 
     const mockCity = {
-            id: 1,
             label: {
                 name: 'Warszawa',
                 imgUrl: warszawa

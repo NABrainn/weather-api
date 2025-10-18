@@ -1,6 +1,7 @@
 import { ForecastDay } from "./forecastDay/ForecastDay.jsx";
 import { ForecastLabel } from "./forecastLabel/ForecastLabel.jsx";
 import styles from "./ForecastItem.module.css"
+import {Button} from "../../../../../../components/button/Button.jsx";
 
 export const CityForecast = (props) => {
     return (
@@ -28,6 +29,18 @@ export const CityForecast = (props) => {
                 rain = {props.forecast.dayAfter.rain}
                 wind = {props.forecast.dayAfter.wind}    
             />
+            <td
+                style={{
+                    textAlign: "center"
+                }}
+            >
+                <Button
+                    bg={'var(--two)'}
+                    text={'▄︻テ══━一💥'}
+                    fontSize={'2em'}
+                    handleClick={() => props.removeFn(props.id)}
+                />
+            </td>
         </tr>
     )
 }

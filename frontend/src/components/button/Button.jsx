@@ -6,6 +6,7 @@ export const Button = (props) => {
             className={styles.button}
             onClick={(e) => props.handleClick(e)}
             style={{
+                fontSize: props.fontSize,
                 background: props.bg,
                 color: props.textColor,
                 padding: props.p,
