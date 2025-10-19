@@ -1,0 +1,8 @@
+.item {
+    margin-top: .25em;
+    font-size: clamp(0.85rem, 0.95vw, 2rem);
+    background-color: var(--two);
+    gap: .5em;
+    color: var(--three);
+    font-weight: bold;
+}

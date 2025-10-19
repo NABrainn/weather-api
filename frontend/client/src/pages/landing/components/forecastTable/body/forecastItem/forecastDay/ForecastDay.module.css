@@ -1,0 +1,16 @@
+.column {
+    & .temperatureColumn {
+        display: grid;
+        grid-template-columns: 1fr 4.2fr;
+        padding-left: .25em;
+    }
+    & .rainColumn,
+    & .windColumn {
+        display: grid;
+        grid-template-columns: 1fr 4.2fr;
+        padding-left: 0.25em;
+        & .quant {
+            font-size: .8rem;
+        }
+    }
+}

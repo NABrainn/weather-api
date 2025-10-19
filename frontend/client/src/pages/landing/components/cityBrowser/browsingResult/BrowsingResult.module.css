@@ -1,0 +1,38 @@
+.error {
+    min-height: 5em;
+    background-color: var(--two);
+    color: var(--one);
+    font-weight: bold;
+    padding: 1em;
+}
+
+.ok {
+    min-height: 5em;
+    background-color: var(--two);
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    color: var(--three);
+    font-weight: bold;
+
+    & .label {
+        font-size: 1.1em;
+        color: var(--one)
+    }
+
+    & .item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 1.2rem;
+
+        & .cityName {
+            font-weight: bold;
+        }
+
+        & .addCityBtn {
+            cursor: pointer;
+            color: var(--five);
+        }
+    }
+}
