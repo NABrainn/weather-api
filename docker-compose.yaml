@@ -1,0 +1,10 @@
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+
+networks:
+  app-network:
+    driver: bridge
