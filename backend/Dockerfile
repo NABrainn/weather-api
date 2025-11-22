@@ -3,10 +3,10 @@ WORKDIR /app
 COPY . .
 RUN gradle clean build --no-daemon
 
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
-EXPOSE 8080
+EXPOSE 7070
 
 ENTRYPOINT ["java", "-jar", "app.jar"]
