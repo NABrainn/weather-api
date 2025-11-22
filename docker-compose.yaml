@@ -1,8 +1,8 @@
 services:
   frontend:
+    container_name: weather-api-frontend
     env_file:
       - .env
-    container_name: frontend
     build:
       context: frontend
       dockerfile: Dockerfile
@@ -14,9 +14,9 @@ services:
       - backend
     restart: unless-stopped
   api:
+    container_name: weather-api-api
     env_file:
       - .env
-    container_name: api
     build:
       context: api
       dockerfile: Dockerfile
@@ -26,11 +26,13 @@ services:
       - SERVER_PORT=8080
     networks:
       - app-network
+    depends_on:
+      - backend
     restart: unless-stopped
   backend:
+    container_name: weather-api-backend
     env_file:
       - .env
-    container_name: backend
     build:
       context: backend
       dockerfile: Dockerfile
@@ -41,8 +43,18 @@ services:
     networks:
       - app-network
     depends_on:
-      - api
+      - postgres
     restart: unless-stopped
+  postgres:
+    container_name: weather-api-postgres
+    env_file:
+      - .env
+    build:
+      context: database
+      dockerfile: Dockerfile
+    networks:
+      - app-network
+
 networks:
   app-network:
     name: app_network
