@@ -1,13 +1,31 @@
 services:
   frontend:
+    env_file:
+      - .env
     container_name: frontend
     build:
       context: frontend
       dockerfile: Dockerfile
     ports:
-      - "5001:5001"
+      - "80:80"
     networks:
       - app-network
+    depends_on:
+      - api
+    restart: unless-stopped
+  api:
+    env_file:
+      - .env
+    container_name: api
+    build:
+      context: api
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - app-network
+    restart: unless-stopped
 networks:
   app-network:
+    name: app_network
     driver: bridge

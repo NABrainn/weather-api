@@ -1,27 +1,15 @@
-FROM node:latest AS client-build
+# ==== BUILD STAGE ====
+FROM node:20-alpine AS builder
 
-WORKDIR /client
-COPY client/package*.json .
-RUN npm install
-COPY client/. .
+WORKDIR /app
+COPY client/package*.json ./
+RUN npm ci --silent
+COPY client/ .
 RUN npm run build
 
-FROM maven:latest AS server-build
+FROM nginx:alpine
 
-WORKDIR /server
-COPY server/pom.xml .
-COPY server/src .
-WORKDIR /server/src/main/resources/
-RUN rm -rf /static
-RUN mkdir /static
-WORKDIR /server
-COPY --from=client-build client/dist ./src/main/resources/static
-RUN mvn clean package
-
-FROM eclipse-temurin:25-jdk AS server
-
-WORKDIR /server
-COPY --from=server-build /server/target/jar-with-dependencies.jar app.jar
-ENV PORT=5001
-EXPOSE 5001
-ENTRYPOINT ["java", "-jar", "app.jar"]
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
