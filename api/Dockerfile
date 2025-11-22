@@ -5,7 +5,7 @@ COPY . .
 RUN gradle clean build --no-daemon
 
 # Obraz uruchomieniowy
-FROM openjdk:21-jdk-slim
+FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
 COPY --from=builder /app/build/libs/*.jar app.jar
 
