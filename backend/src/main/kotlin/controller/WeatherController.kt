@@ -17,12 +17,18 @@ object WeatherController {
             }
 
             val data: WeatherData = ReadFetchOrReadWeather.readFetchOrReadWeatherUseCase(city)
+            println("data: $data")
+
+            if (data == null) {
+                ctx.status(404).result("No weather data found")
+                return@get
+            }
 
             ctx.contentType("application/json")
+            ctx.status(200)
             ctx.result(Json.encodeToString(data))
-
-            ctx.status(404).result("No weather data found")
 
         }
     }
 }
+

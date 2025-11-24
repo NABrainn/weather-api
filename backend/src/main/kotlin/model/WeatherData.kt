@@ -1,5 +1,8 @@
 package model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class WeatherData(
     val city: String,
     val today_temperature: String,
@@ -13,3 +16,5 @@ data class WeatherData(
     val day_after_wind: String,
     val created_at: String
 )
+
+

@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.20"
+    kotlin("plugin.serialization") version "2.0.20"
     application
 }
 
@@ -19,6 +20,7 @@ dependencies {
     implementation("org.jetbrains.exposed:exposed-java-time:0.45.0")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
     implementation("org.slf4j:slf4j-simple:2.0.7")
+    implementation("org.postgresql:postgresql:42.7.3")
 }
 
 tasks.test {

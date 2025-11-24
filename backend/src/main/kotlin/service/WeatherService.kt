@@ -8,7 +8,7 @@ import utils.WeatherApiMapper
 
 object WeatherService {
     private val client = OkHttpClient()
-    private val weatherApiUrl = System.getenv("WEATHER_API_URL") ?: "http://weather-api:8080"
+    private val weatherApiUrl = System.getenv("WEATHER_API_URL") ?: "http://api:8080"
 
     fun fetchWeather(city: String): WeatherData {
         val url = "$weatherApiUrl/weather?city=$city"

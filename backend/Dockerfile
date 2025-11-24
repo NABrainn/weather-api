@@ -1,12 +1,12 @@
+# backend/Dockerfile (i analogicznie api/Dockerfile)
 FROM gradle:8.4-jdk21 AS builder
-WORKDIR /app
-COPY . .
-RUN gradle clean build --no-daemon
+WORKDIR /project
+# kopiujemy pliki build-owe, najlepiej .gradle i src
+COPY --chown=gradle:gradle . .
+RUN gradle clean build --no-daemon -x test
 
 FROM eclipse-temurin:21-jre-alpine
 WORKDIR /app
-COPY --from=builder /app/build/libs/*.jar app.jar
-
+COPY --from=builder /project/build/libs/*.jar app.jar
 EXPOSE 7070
-
 ENTRYPOINT ["java", "-jar", "app.jar"]
