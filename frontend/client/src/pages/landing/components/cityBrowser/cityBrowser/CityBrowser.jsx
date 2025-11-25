@@ -2,11 +2,11 @@ import { useState } from "react"
 import { Button } from '../../../../../components/button/Button.jsx'
 import { Textfield } from "../../../../../components/textfield/Textfield.jsx"
 import { useHttpClient } from '../../../../../hooks/useHttpClient.js'
-import { BrowsingResult } from '../browsingResult/BrowsingResult.jsx'
 import warszawa from '../../../../../assets/warszawa.jpg'
 import styles from './CityBrowser.module.css'
 
 export const CityBrowser = (props) => {
+    const API_URL = props.apiUrl
     const client = useHttpClient()
 
     const [browsingResult, setBrowsingResult] = useState(undefined)
@@ -41,25 +41,22 @@ export const CityBrowser = (props) => {
 
     const search = async (e) => {
         e.preventDefault()
-        if(mockCity) {
-            setBrowsingResult(mockCity)
-            setCityInputValue('')
+        if(!cityInputValue) {
             return
         }
-        const response = await client.send('http://nrk.no', {
+        const response = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
             method: "GET",
-            body: JSON.stringify({
-                name: cityInputValue
-            })
+            headers: {
+                accept: "application/json",
+                accessControlAllowOrigin: "*"
+            }
         })
+        console.log(response)
         if(response.json) {
             setBrowsingResult(response.json)
         }
         setCityInputValue('')
-    }
-    const addCity = () => {
         props.addCity(browsingResult)
-        setBrowsingResult(undefined)
     }
     return (
         <>
@@ -87,11 +84,6 @@ export const CityBrowser = (props) => {
                     text={'Szukaj'}
                 />
             </form>
-            <BrowsingResult
-                error={client.error}
-                value={browsingResult}
-                addCity={() => addCity()}
-            />
         </>
     )
 }
