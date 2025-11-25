@@ -9,7 +9,7 @@ fun main() {
     val app = Javalin.create { config ->
         config.plugins.enableCors { cors ->
             cors.add { rule ->
-                rule.allowHost("http://localhost:5173")
+                rule.allowHost("http://localhost:5173", "http://localhost/", "http://localhost:88")
             }
         }
     }.start(port)
