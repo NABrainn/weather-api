@@ -40,18 +40,18 @@ export const CityBrowser = (props) => {
         }
 
     const search = async (e) => {
+        console.log(props.apiUrl)
         e.preventDefault()
         if(!cityInputValue) {
             return
         }
         const response = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
             method: "GET",
+            contentType: "application/json",
             headers: {
-                accept: "application/json",
                 accessControlAllowOrigin: "*"
             }
         })
-        console.log(response)
         if(response.json) {
             setBrowsingResult(response.json)
         }
