@@ -24,16 +24,25 @@ export const CityTable = (props) => {
             </thead>
             <tbody>
             {
-                props.cities.map(city =>
-                    <CityForecast
+                props.cities.map(city => {
+                    console.log(city)
+                    return <CityForecast
                         key={city.id}
                         id={city.id}
-                        label={city.label}
-                        forecast={city.forecast}
+                        city={city.city}
+                        todayTemperature={city.today_temperature}
+                        todayRain={city.today_rain}
+                        todayWind={city.today_wind}
+                        tomorrowTemperature={city.tomorrow_temperature}
+                        tomorrowRain={city.tomorrow_temperature}
+                        tomorrowWind={city.tomorrow_wind}
+                        dayAfterTemperature={city.day_after_temperature}
+                        dayAfterRain={city.day_after_rain}
+                        dayAfterWind={city.day_after_wind}
                         removeFn={(id) => props.removeCity(id)}
                     >
                     </CityForecast>
-                )
+                })
             }
             </tbody>
         </table>;

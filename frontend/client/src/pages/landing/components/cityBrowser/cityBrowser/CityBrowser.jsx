@@ -40,23 +40,25 @@ export const CityBrowser = (props) => {
         }
 
     const search = async (e) => {
-        console.log(props.apiUrl)
         e.preventDefault()
-        if(!cityInputValue) {
-            return
-        }
-        const response = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
+        if (!cityInputValue.trim()) return
+
+        const result = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
             method: "GET",
-            contentType: "application/json",
             headers: {
-                accessControlAllowOrigin: "*"
+                "Content-Type": "application/json",
             }
         })
-        if(response.json) {
-            setBrowsingResult(response.json)
+
+        if (!result.error && result.json) {
+            const cityData = result.json
+
+            setBrowsingResult(cityData)
+            setCityInputValue('')
+            props.addCity(cityData)
+        } else {
+            console.error("Failed to fetch weather data")
         }
-        setCityInputValue('')
-        props.addCity(browsingResult)
     }
     return (
         <>
