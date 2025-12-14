@@ -23,13 +23,7 @@ export const useCityStore = () => {
 
     const add = useCallback(
         (city) => {
-            if (!city?.label?.name || typeof city.forecast !== "object") {
-                console.error("Invalid city object:", city);
-                return;
-            }
-
             const newId = cities.length > 0 ? Math.max(...cities.map((c) => c.id)) + 1 : 0;
-
             const newCity = { ...city, id: newId };
             const updatedCities = [...cities, newCity];
             setCities(updatedCities);

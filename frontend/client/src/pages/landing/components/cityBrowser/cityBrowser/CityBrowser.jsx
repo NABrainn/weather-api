@@ -12,51 +12,27 @@ export const CityBrowser = (props) => {
     const [browsingResult, setBrowsingResult] = useState(undefined)
     const [cityInputValue, setCityInputValue] = useState('')
 
-    const mockCity = {
-            label: {
-                name: 'Warszawa',
-                imgUrl: warszawa
-            },
-            forecast: {
-                today: {
-                    temperature: 5,    // Celsius
-                    rain: 0,            // mm
-                    wind: 4,            // m/s
-                    details: {}
-                },
-                tomorrow: {
-                    temperature: 7,
-                    rain: 0.8,
-                    wind: 5,
-                    details: {}
-                },
-                dayAfter: {
-                    temperature: 9,
-                    rain: 1.8,
-                    wind: 5,
-                    details: {}
-                }
-            }
-        }
-
     const search = async (e) => {
         e.preventDefault()
-        if(!cityInputValue) {
-            return
-        }
-        const response = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
+        if (!cityInputValue.trim()) return
+
+        const result = await client.send(`${API_URL}/weather?city=${cityInputValue}`, {
             method: "GET",
             headers: {
-                accept: "application/json",
-                accessControlAllowOrigin: "*"
+                "Content-Type": "application/json",
             }
         })
-        console.log(response)
-        if(response.json) {
-            setBrowsingResult(response.json)
+
+        if (!result.error && result.json) {
+            const cityData = result.json
+
+            setBrowsingResult(cityData)
+            setCityInputValue('')
+            console.log('city added', cityData)
+            props.addCity(cityData)
+        } else {
+            console.error("Failed to fetch weather data")
         }
-        setCityInputValue('')
-        props.addCity(browsingResult)
     }
     return (
         <>
