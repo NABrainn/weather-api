@@ -9,25 +9,25 @@ export const CityForecast = (props) => {
             className={styles.item}
         >
             <ForecastLabel
-            city={props.label.name}
-            imgUrl={props.label.imgUrl}/>
+            city={props.city}
+            imgUrl={props?.imgUrl}/>
             <ForecastDay
                 text = {'Dzisiaj'}
-                temperature = {props.forecast.today.temperature}
-                rain = {props.forecast.today.rain}
-                wind = {props.forecast.today.wind}    
+                temperature = {props.todayTemperature}
+                rain = {props.todayRain}
+                wind = {props.todayWind}
             />
             <ForecastDay
                 text = {'Jutro'}
-                temperature = {props.forecast.tomorrow.temperature}
-                rain = {props.forecast.tomorrow.rain}
-                wind = {props.forecast.tomorrow.wind}    
+                temperature = {props.tomorrowTemperature}
+                rain = {props.tomorrowRain}
+                wind = {props.tomorrowWind}
             />
             <ForecastDay
                 text = {'Pojutrze'}
-                temperature = {props.forecast.dayAfter.temperature}
-                rain = {props.forecast.dayAfter.rain}
-                wind = {props.forecast.dayAfter.wind}    
+                temperature = {props.dayAfterTemperature}
+                rain = {props.dayAfterRain}
+                wind = {props.dayAfterWind}
             />
             <td
                 style={{

@@ -5,7 +5,7 @@ import okhttp3.Request
 import java.net.URLEncoder
 
 val apiKey = System.getenv("WEATHER_API_KEY") ?: throw Exception("Missing API key")
-val baseUrl = "http://api.weatherapi.com/v1/forecast.json"
+val baseUrl = "https://api.weatherapi.com/v1/forecast.json"
 val client = OkHttpClient()
 
 fun main() {
